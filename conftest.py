@@ -6,7 +6,8 @@ from selenium.webdriver.chrome.options import Options
 def pytest_addoption(parser):
     parser.addoption('--language', action='store', default='en')
 
-@pytest.fixture(scope='function')
+
+@pytest.fixture(scope='session')
 def browser(request):
     language = request.config.getoption('language')
     options = Options()
