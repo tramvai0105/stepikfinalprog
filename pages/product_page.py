@@ -22,3 +22,11 @@ class ProductPage(BasePage):
         message = self.browser.find_element(*ProductPageLocators.MESSAGE_ABOUT_ADDING).text
         product_name += " has been added to your basket."
         assert product_name == message, "No product name in the message"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.MESSAGE_ABOUT_ADDING), \
+            "Success message is presented, but should not be"
+
+    def should_disapear_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.MESSAGE_ABOUT_ADDING), \
+            "Success message do not disapear"
